@@ -16,7 +16,7 @@ def register():
     # if method is Post check inputs and load into database
     if request.method == "POST":
         # get the data from the form
-        username = request.form["usedrname"]
+        username = request.form["username"]
         password = request.form["password"]
         db = get_db() # load database
         error = None

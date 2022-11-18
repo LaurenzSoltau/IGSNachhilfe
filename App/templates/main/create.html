@@ -33,7 +33,8 @@
                 <ul class="pe-md-5">
                     {% for subject in subjects1 %}
                     <li>
-                        <input type="checkbox" class="form-check-input" value="{{ subject }}" id="{{ subject }}" name="{{ subject }}">
+                        <input type="hidden" class="form-control" name="{{ subject }}" value="0">
+                        <input type="checkbox" class="form-check-input" value="1" id="{{ subject }}" name="{{ subject }}">
                         <label for="{{ subject }}" class="form-check-label">{{ subject|capitalize }}</label>
                     </li>
                     {% endfor %}
@@ -41,6 +42,7 @@
                 <ul class="ps-md-5">
                     {% for subject in subjects2 %}
                     <li>
+                        <input type="hidden" class="form-control" name="{{ subject }}" value="0">
                         <input type="checkbox" class="form-check-input" value="{{ subject }}" id="{{ subject }}" name="{{ subject }}">
                         <label for="{{ subject }}" class="form-check-label">{{ subject|capitalize }}</label>
                     </li>

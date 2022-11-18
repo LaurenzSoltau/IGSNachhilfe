@@ -7,9 +7,9 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from App.db import get_db
 
-# create blueprint named auth and the urls prefix auth
-bp = Blueprint("index", __name__, url_prefix="/main")
+
+bp = Blueprint("index", __name__)
 
 @bp.route("/")
 def index():
-    return render_template("base.html")
+    return render_template("main/index.html")

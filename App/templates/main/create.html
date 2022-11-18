@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Neues Inserat
+{% endblock %}
+
+
+{% block content %}
+<div class="container p-5 col-9">
+    <form method="post">
+        <div class="mb-3">
+          <label for="email" class="form-label">E-mail Adresse</label>
+          <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="mb-3">
+          <label for="title" class="form-label">Titel der Anzeige</label>
+          <input type="text" class="form-control" id="title" name="title" required>
+        </div>
+        <div class="mb-3">
+            <label for="body" class="form-label">Inhalt deiner Anzeige</label>
+            <textarea name="body" id="body" cols="30" rows="8" class="form-control"></textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="grade_from">Von und bis zu welcher Klasse willst du Nachhilfe geben?</label>
+            <div class="d-flex flex-row">
+                <input type="number" class="form-control me-2" min="1" max="13" id="grade_from" name="grade_from" required>
+                <input type="number" class="form-control ms-2" min="1" max="13" id="grade_to" name="grade_to" required>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="deutsch" class="form-label">In Welchen Fächern möchtest du Nachhilfe geben?</label>
+            <div class="form-check d-flex flex-row ps-0">
+                <ul class="pe-md-5">
+                    {% for subject in subjects1 %}
+                    <li>
+                        <input type="checkbox" class="form-check-input" value="{{ subject }}" id="{{ subject }}" name="{{ subject }}">
+                        <label for="{{ subject }}" class="form-check-label">{{ subject|capitalize }}</label>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <ul class="ps-md-5">
+                    {% for subject in subjects2 %}
+                    <li>
+                        <input type="checkbox" class="form-check-input" value="{{ subject }}" id="{{ subject }}" name="{{ subject }}">
+                        <label for="{{ subject }}" class="form-check-label">{{ subject|capitalize }}</label>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+          
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+</div>
+
+
+
+{% endblock %}

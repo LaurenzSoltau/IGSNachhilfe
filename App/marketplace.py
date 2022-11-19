@@ -8,13 +8,13 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from App.db import get_db
 
 
-bp = Blueprint("index", __name__)
+bp = Blueprint("marketplace", __name__)
 
-@bp.route("/")
-def index():
+@bp.route("/marketplace")
+def marketplace():
     db = get_db()
     posts = db.execute(
         "SELECT * FROM post"
     ).fetchall()
 
-    return render_template("main/index.html", posts=posts)
+    return render_template("main/marketplace.html", posts=posts)

@@ -17,23 +17,27 @@ def register():
     if request.method == "POST":
         # get the data from the form
         username = request.form["username"]
+        email = request.form["email"].lower()
         password = request.form["password"]
         db = get_db() # load database
         error = None
 
         # guard clauses to validate inputs
         if not username:
-            error = "Username required."
+            error = "Gib einen Username ein!"
+        elif not email:
+            error = "Gib eine Email ein!"
         elif not password:
-            error = "Password required."
+            error = "Gib ein Passwort ein!"
 
         # if the input is valid call database and save the new user in users
         if error is None:
             try:
                 db.execute(
-                    "INSERT INTO user (username, password) VALUES (?, ?)", 
-                    (username, generate_password_hash(password)),
+                    "INSERT INTO user (username, email, password) VALUES (?, ?, ?)", 
+                    (username, email, generate_password_hash(password)),
                 )
+                db.commit()
             except db.IntegrityError:
                 error = f"User {username} is already registered."
         
@@ -50,14 +54,14 @@ def register():
 def login():
     if request.method == "POST":
         # get the data from the html form
-        username = request.form["username"]
+        email = request.form["email"].lower()
         password = request.form["password"]
         db = get_db()
         error = None
 
         # get the data from the database where username is equal to inputed username
         user = db.execute(
-            "SELECT * FROM user WHERE username = ?", (username,)
+            "SELECT * FROM user WHERE email = ?", (email,)
         ).fetchone()
 
         # guardclauses to make sure the username and password is right if it exists
@@ -70,11 +74,11 @@ def login():
         if error == None:
             session.clear()
             session["user_id"] = [user["id"]]
-            return redirect(url_for("index"))
+            return redirect(url_for("index.index"))
 
         flash(error)
 
-        return render_template("auth/login.html")
+    return render_template("auth/login.html")
 
 
 @bp.before_app_request
@@ -85,14 +89,14 @@ def load_logged_in_user():
         g.user = None
     else:
         g.user = get_db().execute(
-            "SELECT * FROM user WHERE id = ?", (user_id,)
+            "SELECT * FROM user WHERE id = ?", (user_id)
         ).fetchone()
 
 
 @bp.route("/logout")
 def logout():
     session.clear()
-    return redirect(url_for("index"))
+    return redirect(url_for("index.index"))
 
 
 def login_required(view):

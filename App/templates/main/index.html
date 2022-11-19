@@ -5,5 +5,119 @@
 {% endblock %}
 
 {% block content %}
+<div class="container">
+  <div class="d-flex flex-wrap flex-column align-items-center">
+    <h1 class=" mt-5 mb-1"><span class="text-primary fw-bold">IGS</span>Nachhilfe</h1>
+    <p class="mb-3">"Seeking help is a sign of strenght, not weakness"</p>
+  </div>
+  <div class="d-flex flex-row align-items-between mt-5">
+    <div>
+      <h3>Informationen</h3>
+      <p class="fs-5 col-10 mb-5">
+          IGSNachhilfe soll es erleichtern Nachhilfeschüler sowie Nachhilfe Lehrer zu finden.
+          Dafür stellen wir eine Art digitales schwarzes Brett zur Verfügung, auf dem Nachhilfe Lehrer 
+          Angebote und Schüler gesuche schalten können. Dabei dient unserer Service lediglich der Vermittlung!
+          Wir übernehmen also keine Transaktionen oder ähnliches. Falls ihr Probleme, Anregungen oder Verbsserungsvorschläge habt, teilt diese
+          gerne über die Kontaktseite mit uns!
+      </p>
+    </div>
+    <div id="carouselExampleControls" class="carousel d-none d-md-block slide col-6 mb-5 ms-md-5 me-56" data-bs-ride="carousel">
+      <h3><a href="{{url_for('marketplace.marketplace')}}">Anzeigen</a></h3>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="container border rounded ">
+            <div class="container">
+              <h4 class="mb-0 mt-1">{{ posts[0]["title"] }}</h4>
+            </div>
+            <div class="container">
+              <ul class="d-flex flex-wrap ps-0 mb-0 text-secondary">
+                {% set subjects = posts[0]["subject"].split(",") %}
+                {% set sliced_subjects = subjects[:3] %}
+                {% for subject in sliced_subjects %}
+                    <li class="list-group-item">
+                       <small>{{ subject }}&nbsp;</small> 
+                    </li>
+                {% endfor %}
+                {% if subjects|length > 3 %}
+                ...
+                {% endif %}
+            </ul>
+            </div>
+          <div class="container">
+            <p>
+              {{ posts[0]["body"] | truncate(300)}}
+            </p>
+          </div>
+            
+          </div>
+        </div>
+        <div class="carousel-item">
+        <div class="container border rounded">
+            <div class="container">
+              <h4 class="mb-0 mt-1">{{ posts[1]["title"] }}</h4>
+            </div>
+            <div class="container">
+              <ul class="d-flex flex-wrap ps-0 mb-0 text-secondary">
+                {% set subjects = posts[1]["subject"].split(",") %}
+                {% set sliced_subjects = subjects[:3] %}
+                {% for subject in sliced_subjects %}
+                    <li class="list-group-item">
+                      <small>{{ subject }}&nbsp;</small> 
+                    </li>
+                {% endfor %}
+                {% if subjects|length > 3 %}
+                ...
+                {% endif %}
+            </ul>
+          </div>
+          <div class="container">
+            <p>
+              {{ posts[1]["body"] | truncate(300) }}
+            </p>
+          </div>
+            
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="container border rounded">
+            <div class="container">
+              <h4 class="mb-0 mt-1">{{ posts[2]["title"] }}</h4>
+            </div>
+            <div class="container">
+              <ul class="d-flex flex-wrap ps-0 mb-0 text-secondary">
+                {% set subjects = posts[2]["subject"].split(",") %}
+                {% set sliced_subjects = subjects[:3] %}
+                {% for subject in sliced_subjects %}
+                    <li class="list-group-item">
+                      <small>{{ subject }}&nbsp;</small> 
+                    </li>
+                {% endfor %}
+                {% if subjects|length > 3 %}
+                ...
+                {% endif %}
+            </ul>
+          </div>
+          {{ posts[2]["body"] | truncate(300) }}
+            
+          </div>
+        </div>
+      </div>
+    </div>
     
+  </div>
+  <div>
+    <h3 class="mt-5">Über Uns</h3>
+    <p class="fs-5 w-100">
+        IGSNachhilfe ist ausschließlich mit dem Ziel entstanden, es Schülern der IGS leichter zu machen, Nachhilfe Lehrer und sowie Schüler zu finden.
+        Dabei ist es uns wichtig, Nachhilfe nicht als etwas negatives zu begreifen. Für einige Schüler, reicht auch der beste Unterricht
+        nicht aus, um alles sofort zu begreifen. Unterstützung von älteren Schülern zu bekommen ist da eine super Möglichkeit,
+        um den Unterrichtsstoff besser zu durchdringen und folglich mehr Spaß am Unterricht zu haben. Wir halten die Verteufelung von Nachhilfe für
+        veraltet und möchten Schüler jedes Leistungsstands dazu ermutigen, ihre Noten durch Nachhilfe auf das nächste Level zu bringen. 
+        Deshalb lautet unser Motto: "Seeking Help is a sign of strenght, not weakness"
+    </p>
+  </div>
+</div>
+
+   
+
 {% endblock %}

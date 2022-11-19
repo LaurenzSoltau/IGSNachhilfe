@@ -42,6 +42,9 @@ def create_app(test_config=None):
 
     from . import create
     app.register_blueprint(create.bp)
+
+    from . import marketplace
+    app.register_blueprint(marketplace.bp)
     
     return app
 

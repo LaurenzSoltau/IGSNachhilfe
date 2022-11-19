@@ -66,7 +66,7 @@ def create():
                 error = "Es gibt bereits eine Anzeige mit diesem Titel."
             # return index page
             else:
-                return redirect(url_for("index.index"))
+                return redirect(url_for("marketplace.marketplace"))
 
 
         flash(error)

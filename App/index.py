@@ -1,4 +1,5 @@
 import functools
+import random
 
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
@@ -16,5 +17,6 @@ def index():
     posts = db.execute(
         "SELECT * FROM post"
     ).fetchall()
+    preview = random.sample(posts, k=3)
 
-    return render_template("main/index.html", posts=posts)
+    return render_template("main/index.html", posts=preview)

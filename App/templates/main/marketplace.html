@@ -5,9 +5,14 @@
 {% endblock %}
 
 {% block content %}
+    <div class="d-flex flex-wrap flex-row-reverse mx-5 mt-3 mb-0">
+        {% if g.user %}
+            <a class="btn btn-primary" href="{{ url_for('post.create') }}">Create</a>
+        {% endif %}
+    </div>
     <div class="container p-2 p-md-5">
         {% for post in posts %}
-            <div class="container border rounded bg-light col-12 col-md-8 my-5" >
+            <div class="container border rounded bg-light col-12 col-md-8 mb-5 mt-3" >
                 <div class="container" name="upper">
                     <div class="p-0">
                         <h1 class="mb-0 mt-1">{{ post["title"] }}</h1>
@@ -23,14 +28,16 @@
                     </div>
                 </div>
                 <div class="container">
-                    <p class="mb-1">{{ post["body"]}}</p>
+                    <div style="overflow-wrap: break-word;">
+                        {{ post["body"]}}
+                    </div>
                     <hr class="mx-0 my-1 p-0">
                     <div class="d-flex flex-wrap justify-content-between">
                         <small>
                             Von der {{post["grade_from"] }}. Klasse bis zur {{post["grade_to"] }}. Klasse.
                         </small> 
                         <p>
-                            <a class="btn btn-primary" data-bs-toggle="collapse" href="#contact{{ post['id'] }}" role="button">
+                            <a class="btn btn-info" data-bs-toggle="collapse" href="#contact{{ post['id'] }}" role="button">
                               Kontakt
                             </a>
                         </p>
@@ -43,8 +50,11 @@
                 </div>
 
 
-                <div class="container">
+                <div class="px-2 d-flex flex-wrap justify-content-between pb-2">
                     <small class="text-secondary">erstellt am {{ post["created"] }}</small>
+                    {% if g.user['id'] == post['offerer'] %}
+                    <a class="btn btn-primary" href="{{ url_for('post.edit', id=post['id']) }}">Bearbeiten</a>
+                    {% endif %}
                 </div>
                 
             </div>

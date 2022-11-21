@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Bearbeiten
+{% endblock %}
+
+{% block content %}
+<div class="container p-2 col-12 p-md-5 col-md-9">
+    <form method="post">
+        <div class="mb-3">
+          <label for="title" class="form-label">Titel der Anzeige</label>
+          <input type="text" class="form-control" id="title" name="title" required value="{{post['title']}}">
+        </div>
+        <div class="mb-3">
+            <label for="body" class="form-label">Inhalt deiner Anzeige</label>
+            <textarea name="body" id="body" cols="30" rows="8" class="form-control">{{ post['body'] }}</textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="grade_from">Von und bis zu welcher Klasse willst du Nachhilfe geben?</label>
+            <div class="d-flex flex-row">
+                <input value="{{ post['grade_from'] }}" type="number" class="form-control me-2" min="1" max="13" id="grade_from" name="grade_from" required>
+                <input value="{{ post['grade_to'] }}" type="number" class="form-control ms-2" min="1" max="13" id="grade_to" name="grade_to" required>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<div class="d-flex justify-content-center">
+    Bearbeiten
+</div>
+
+
+
+{% endblock %}

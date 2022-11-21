@@ -5,24 +5,24 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="d-flex flex-column justify-content-center mx-2 mx-md-5">
   <div class="d-flex flex-wrap flex-column align-items-center">
-    <h1 class=" mt-5 mb-1"><span class="text-primary fw-bold">IGS</span>Nachhilfe</h1>
+    <h1 class=" mt-5 mb-1"><span class="text-primary fw-bold">Buchholz</span>Nachhilfe</h1>
     <p class="mb-3">"Seeking help is a sign of strenght, not weakness"</p>
   </div>
   <div class="d-flex flex-row align-items-between mt-5">
     <div>
       <h3>Informationen</h3>
       <p class="fs-5 col-10 mb-5">
-          IGSNachhilfe soll es erleichtern Nachhilfeschüler sowie Nachhilfe Lehrer zu finden.
-          Dafür stellen wir eine Art digitales schwarzes Brett zur Verfügung, auf dem Nachhilfe Lehrer 
-          Angebote und Schüler gesuche schalten können. Dabei dient unserer Service lediglich der Vermittlung!
+          IGSNachhilfe soll es erleichtern Nachhilfelehrer und Nachhilfelehrerin zu finden.
+          Dafür stellen wir eine Art digitales schwarzes Brett zur Verfügung, auf dem Nachhilfelehrer und Nachhilfelehrerin
+          Angebote schalten können. Dabei dient unserer Service lediglich der Vermittlung!
           Wir übernehmen also keine Transaktionen oder ähnliches. Falls ihr Probleme, Anregungen oder Verbsserungsvorschläge habt, teilt diese
           gerne über die Kontaktseite mit uns!
       </p>
     </div>
     <div id="carouselExampleControls" class="carousel d-none d-md-block slide col-6 mb-5 ms-md-5 me-56" data-bs-ride="carousel">
-      <h3><a href="{{url_for('marketplace.marketplace')}}">Anzeigen</a></h3>
+      <h3><a class="text-primary" style="text-decoration: none;" href="{{url_for('marketplace.marketplace')}}">Anzeigen</a></h3>
       <div class="carousel-inner">
         <div class="carousel-item active">
           <div class="container border rounded ">
@@ -108,7 +108,7 @@
   <div>
     <h3 class="mt-5">Über Uns</h3>
     <p class="fs-5 w-100">
-        IGSNachhilfe ist ausschließlich mit dem Ziel entstanden, es Schülern der IGS leichter zu machen, Nachhilfe Lehrer und sowie Schüler zu finden.
+        IGSNachhilfe ist ausschließlich mit dem Ziel entstanden, es Schülern der IGS leichter zu machen, Nachhilfe Lehrer zu finden.
         Dabei ist es uns wichtig, Nachhilfe nicht als etwas negatives zu begreifen. Für einige Schüler, reicht auch der beste Unterricht
         nicht aus, um alles sofort zu begreifen. Unterstützung von älteren Schülern zu bekommen ist da eine super Möglichkeit,
         um den Unterrichtsstoff besser zu durchdringen und folglich mehr Spaß am Unterricht zu haben. Wir halten die Verteufelung von Nachhilfe für

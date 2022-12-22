@@ -17,6 +17,11 @@ def index():
     posts = db.execute(
         "SELECT * FROM post"
     ).fetchall()
-    preview = random.sample(posts, k=3)
+    length = len(posts)
+    if length > 1:
+        preview = random.sample(posts, k=length)
+    else:
+        preview = []
+
 
     return render_template("main/index.html", posts=preview)

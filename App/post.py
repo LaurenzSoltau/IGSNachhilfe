@@ -53,7 +53,6 @@ def create():
         elif not grade_to:
             error = "Bitte gib an bis zu welcher Klasse du Nachhilfe geben möchtest."
         elif int(grade_from) > int(grade_to):
-            print("test")
             error = "Deine Eingabe ergibt keinen Sinn, prüfe nochmal welchen Klassen du Nachhilfe geben möchtest."
         
         if error is None:
@@ -112,8 +111,8 @@ def edit(id):
             error = "Bitte gib an ab welcher Klasse du Nachhilfe geben möchtest."
         elif not grade_to:
             error = "Bitte gib an bis zu welcher Klasse du Nachhilfe geben möchtest."
-        elif grade_from > grade_to:
-            error = "Deine Eingabe ergibt kein Sinn, prüfe nochmal welchen Klassen du nachhilfe geben möchtest."
+        elif int(grade_from) > int(grade_to):
+            error = "Deine Eingabe ergibt keinen Sinn, prüfe nochmal welchen Klassen du Nachhilfe geben möchtest."
 
         if error is not None:
             flash(error)
@@ -131,7 +130,14 @@ def edit(id):
     return render_template("main/edit.html", post=post)
     
 
-@bp.route("/delete")
+@bp.route("/<int:id>/delete", methods=("POST",))
 @login_required
-def delete():
-    pass
+def delete(id):
+    get_post(id)
+    db = get_db()
+    db.execute(
+        "DELETE FROM post WHERE id = ?",
+        (id,)
+    )
+    db.commit()
+    return redirect(url_for("marketplace.marketplace"))

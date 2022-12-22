@@ -53,7 +53,12 @@
                 <div class="px-2 d-flex flex-wrap justify-content-between pb-2">
                     <small class="text-secondary">erstellt am {{ post["created"] }}</small>
                     {% if g.user['id'] == post['offerer'] %}
-                    <a class="btn btn-primary" href="{{ url_for('post.edit', id=post['id']) }}">Bearbeiten</a>
+                    <div class="d-flex flex-row flex-wrap px-2 pb-2">
+                        <form action="{{ url_for('post.delete', id=post['id']) }}" method="post">
+                            <input class="btn btn-danger" type="submit" value="Delete" onclick="return confirm('Bist du sicher?')">
+                        </form>
+                        <a class="btn btn-primary ms-3" href="{{ url_for('post.edit', id=post['id']) }}">Bearbeiten</a>
+                    </div>
                     {% endif %}
                 </div>
                 

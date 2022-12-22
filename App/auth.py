@@ -66,7 +66,7 @@ def login():
 
         # guardclauses to make sure the username and password is right if it exists
         if user is None:
-            error = "Incorrect username."
+            error = "Incorrect Email."
         elif not check_password_hash(user["password"], password):
             error = "Incorrect password."
 

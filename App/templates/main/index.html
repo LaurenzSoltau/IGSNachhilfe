@@ -10,6 +10,7 @@
     <h1 class=" mt-5 mb-1"><span class="text-primary fw-bold">Buchholz</span>Nachhilfe</h1>
     <p class="mb-3">"Seeking help is a sign of strenght, not weakness"</p>
   </div>
+  <img src="teaching.jpg" alt="">
   <div class="d-flex flex-row align-items-between mt-5">
     <div>
       <h3>Informationen</h3>
@@ -21,13 +22,15 @@
           gerne über die Kontaktseite mit uns!
       </p>
     </div>
+    {% if posts|length > 2 %}
     <div id="carouselExampleControls" class="carousel d-none d-md-block slide col-6 mb-5 ms-md-5 me-56" data-bs-ride="carousel">
       <h3><a class="text-primary" style="text-decoration: none;" href="{{url_for('marketplace.marketplace')}}">Anzeigen</a></h3>
       <div class="carousel-inner">
         <div class="carousel-item active">
           <div class="container border rounded ">
             <div class="container">
-              <h4 class="mb-0 mt-1">{{ posts[0]["title"] }}</h4>
+              <h4 href="marketplace.html" class="mb-0 mt-1">{{ posts[0]["title"] }}</h4>
+              <hr class="my-1">
             </div>
             <div class="container">
               <ul class="d-flex flex-wrap ps-0 mb-0 text-secondary">
@@ -55,6 +58,7 @@
         <div class="container border rounded">
             <div class="container">
               <h4 class="mb-0 mt-1">{{ posts[1]["title"] }}</h4>
+              <hr class="my-1">
             </div>
             <div class="container">
               <ul class="d-flex flex-wrap ps-0 mb-0 text-secondary">
@@ -82,6 +86,7 @@
           <div class="container border rounded">
             <div class="container">
               <h4 class="mb-0 mt-1">{{ posts[2]["title"] }}</h4>
+              <hr class="my-1">
             </div>
             <div class="container">
               <ul class="d-flex flex-wrap ps-0 mb-0 text-secondary">
@@ -103,10 +108,12 @@
         </div>
       </div>
     </div>
+    {% endif %}
     
   </div>
-  <div>
-    <h3 class="mt-5">Über Uns</h3>
+  <div class="mt-0 mb-0 mb-lg-5 mt-lg-5"></div>
+  <div class="mt-lg-5">
+    <h3 class="mt-lg-5">Über Uns</h3>
     <p class="fs-5 w-100">
         IGSNachhilfe ist ausschließlich mit dem Ziel entstanden, es Schülern der IGS leichter zu machen, Nachhilfe Lehrer zu finden.
         Dabei ist es uns wichtig, Nachhilfe nicht als etwas negatives zu begreifen. Für einige Schüler, reicht auch der beste Unterricht
